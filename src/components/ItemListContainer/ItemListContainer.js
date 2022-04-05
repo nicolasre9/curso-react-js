@@ -4,6 +4,8 @@ import { Producto } from '../../Ejemplos/Producto';
 
 export const ItemListContainer = ( {greeting} ) => {
 
+    
+
     const obj = {
         titulo :  "titulo 1",
         contenido :  "contenido 1",
