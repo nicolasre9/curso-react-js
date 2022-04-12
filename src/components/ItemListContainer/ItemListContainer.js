@@ -6,6 +6,7 @@ import { Producto } from '../../Ejemplos/Producto';
 import { pedirDatos } from '../../helpers/pedirDatos';
 import { stock } from '../../data/stock';
 import { Item } from '../Item/item';
+import { useParams } from 'react-router-dom';
 
 
 export const ItemListContainer = ( {greeting} ) => {
@@ -19,6 +20,9 @@ export const ItemListContainer = ( {greeting} ) => {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(false)
 
+    //const params = useParams()
+    const { catId } = useParams()
+
 
     // console.table(stock.map((el) => {
     //     return {
@@ -27,18 +31,22 @@ export const ItemListContainer = ( {greeting} ) => {
     //     }
     // }))
 
-    useEffect(() =>{
+    useEffect(() => {
         setLoading(true)
 
         pedirDatos()
             .then((res) => {
-                setProductos(res);
+                if (catId){
+                    setProductos(res.filter( (el) => el.categoria === catId) );
+                } else {
+                    setProductos(res)
+                }
             })
             .catch((err) => {
                 console.log(err);
             })
             .finally(()=> setLoading(false))
-    },[])
+    }, [catId])
     
 
 

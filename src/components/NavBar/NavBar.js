@@ -9,9 +9,11 @@ export const NavBar = () => {
             </Link>
 
             <nav className="header-nav">
-                <Link to="/" className="header-link">Productos</Link>
-                <Link to="/nosotros" className="header-link">Nosotros</Link>
-                <Link to="/contacto" className="header-link">Contacto</Link>
+                <Link to="/productos/remeras" className="header-link">Remeras</Link>
+                <Link to="/productos/zapatos" className="header-link">Zapatos</Link>
+                <Link to="/productos/gorros" className="header-link">Gorros</Link>
+                {/* <Link to="/nosotros" className="header-link">Nosotros</Link>
+                <Link to="/contacto" className="header-link">Contacto</Link> */}
                 <Link to="/poke-api" className="header-link">PokeAPI</Link>
             </nav>
         </header>
