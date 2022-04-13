@@ -1,5 +1,5 @@
 //import './ItemListContainer.scss'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Boton } from '../../Ejemplos/Boton/Boton';
 import { Clicker } from '../../Ejemplos/Clicker';
 import { Producto } from '../../Ejemplos/Producto';
@@ -33,7 +33,7 @@ export const ItemListContainer = ( {greeting} ) => {
 
     useEffect(() => {
         setLoading(true)
-
+         
         pedirDatos()
             .then((res) => {
                 if (catId){

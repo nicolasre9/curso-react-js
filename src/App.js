@@ -10,29 +10,45 @@ import { Nosotros } from './components/Nosotros';
 import { PokeApi } from './Ejemplos/PokeApi/PokeApi';
 import { Form } from './Ejemplos/Form/Form';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-
+import { MiContext } from './context/MiContext'
+import {useState} from 'react'
 
 
 function App() {
+
+  const [cart, setCart] = useState([]);
+  const agregarAlCarrito = item => {
+    isInCart(item.id)
+    setCart([...cart, item])
+  }
+
+  const isInCart = id => {
+    return cart.some((prod) => prod.id === id) //find() retorna elemento, some() retorna true/false
+  }
+
+
   return (
     <>
-      <BrowserRouter>
-      
-        <NavBar/>
+      <MiContext.Provider value={ {cart, agregarAlCarrito} }>
 
-        <Routes>
-          <Route path="/" element={ <ItemListContainer/> }/>
-          <Route path="/productos/:catId" element={ <ItemListContainer/> }/>
-          <Route path="/detail/:itemId" element={ <ItemDetailContainer/> }/>
-          {/* <Route path="/nosotros" element={ <Nosotros/> }/> */}
-          {/* <Route path="/contacto" element={ <Contacto/> }/> */}
-          <Route path="/poke-api" element={ <PokeApi/> }/>
-          <Route path="/form" element={ <Form/> }/>
+        <BrowserRouter>
+          <NavBar/>
 
-          <Route path="*" element={ <Navigate to='/'/> }/>
-        </Routes>
+          <Routes>
+            <Route path="/" element={ <ItemListContainer/> }/>
+            <Route path="/productos/:catId" element={ <ItemListContainer/> }/>
+            <Route path="/detail/:itemId" element={ <ItemDetailContainer/> }/>
+            {/* <Route path="/nosotros" element={ <Nosotros/> }/> */}
+            {/* <Route path="/contacto" element={ <Contacto/> }/> */}
+            <Route path="/poke-api" element={ <PokeApi/> }/>
+            <Route path="/form" element={ <Form/> }/>
 
-      </BrowserRouter>
+            <Route path="*" element={ <Navigate to='/'/> }/>
+          </Routes>
+
+        </BrowserRouter>
+
+      </MiContext.Provider>
     </>
   );
 }

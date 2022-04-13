@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ItemCount } from '../ItemCount/ItemCount'
 import { useEffect, useState } from 'react'
+import { MiContext } from '../../context/MiContext'
 
 
 export const ItemDetail = ({id, nombre, img, desc, precio, stock, categoria}) => {
 
   const [cantidad, setCantidad] = useState(0)
 
+  const { cart, agregarAlCarrito } = useContext(MiContext)
+
+  console.log(cart)
+
   const handleAgregar = () => {
     if (cantidad === 0) return
-
     const addItem = { id, nombre, precio, stock, cantidad }
-
-    console.table(addItem)
+    agregarAlCarrito(addItem)
   }
 
 
