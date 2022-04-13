@@ -15,6 +15,7 @@ export const NavBar = () => {
                 {/* <Link to="/nosotros" className="header-link">Nosotros</Link>
                 <Link to="/contacto" className="header-link">Contacto</Link> */}
                 <Link to="/poke-api" className="header-link">PokeAPI</Link>
+                <Link to="/form" className="header-link">Form</Link>
             </nav>
         </header>
     )

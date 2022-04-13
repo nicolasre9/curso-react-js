@@ -8,6 +8,7 @@ import { NavBar } from './components/NavBar/NavBar';
 import { Contacto } from './components/Contacto';
 import { Nosotros } from './components/Nosotros';
 import { PokeApi } from './Ejemplos/PokeApi/PokeApi';
+import { Form } from './Ejemplos/Form/Form';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 
 
@@ -26,7 +27,8 @@ function App() {
           {/* <Route path="/nosotros" element={ <Nosotros/> }/> */}
           {/* <Route path="/contacto" element={ <Contacto/> }/> */}
           <Route path="/poke-api" element={ <PokeApi/> }/>
-          
+          <Route path="/form" element={ <Form/> }/>
+
           <Route path="*" element={ <Navigate to='/'/> }/>
         </Routes>
 
