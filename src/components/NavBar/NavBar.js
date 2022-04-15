@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { CartWidget } from "../CartWidget/CartWidget"
 
 export const NavBar = () => {
 
@@ -16,6 +17,8 @@ export const NavBar = () => {
                 <Link to="/contacto" className="header-link">Contacto</Link> */}
                 <Link to="/poke-api" className="header-link">PokeAPI</Link>
                 <Link to="/form" className="header-link">Form</Link>
+                <Link to="/cart" className="header-link">Carro</Link>
+                <CartWidget/>
             </nav>
         </header>
     )

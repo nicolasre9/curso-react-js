@@ -2,20 +2,24 @@ import React, { useContext } from 'react'
 import { ItemCount } from '../ItemCount/ItemCount'
 import { useEffect, useState } from 'react'
 import { MiContext } from '../../context/MiContext'
+import { Link } from "react-router-dom"
 
 
 export const ItemDetail = ({id, nombre, img, desc, precio, stock, categoria}) => {
 
   const [cantidad, setCantidad] = useState(0)
 
-  const { cart, agregarAlCarrito } = useContext(MiContext)
+  const { cart, agregarAlCarrito, isInCart } = useContext(MiContext)
 
   console.log(cart)
 
   const handleAgregar = () => {
     if (cantidad === 0) return
-    const addItem = { id, nombre, precio, stock, cantidad }
-    agregarAlCarrito(addItem)
+
+    if (!isInCart(id)) { 
+      const addItem = { id, nombre, precio, stock, cantidad }
+      agregarAlCarrito(addItem)
+    }
   }
 
 
@@ -27,13 +31,16 @@ export const ItemDetail = ({id, nombre, img, desc, precio, stock, categoria}) =>
         <p>Stock: {stock}</p>
         <h5>Precio: ${precio}</h5>
 
-        <ItemCount max={stock} counter={cantidad} setCounter={setCantidad}/>
+        {
+          isInCart(id)
+            ? <Link to="/cart" className="btn btn-success my-3">Terminar mi compra</Link>
+            : <>
+                <ItemCount max={stock} counter={cantidad} setCounter={setCantidad}/>
+                <button className="btn btn-success my-2" onClick={handleAgregar}>Agregar al carrito</button>
+              </>
+        }
 
-        <button
-          className="btn btn-success my-2"
-          onClick={handleAgregar}>
-          Agregar al carrito
-        </button>
+        
     </div>
   )
 }
