@@ -3,6 +3,7 @@ import { ItemCount } from '../ItemCount/ItemCount'
 import { useEffect, useState } from 'react'
 import { MiContext } from '../../context/MiContext'
 import { Link } from "react-router-dom"
+import { Memo } from '../../Ejemplos/Memo/Memo'
 
 
 export const ItemDetail = ({id, nombre, img, desc, precio, stock, categoria}) => {
@@ -30,7 +31,9 @@ export const ItemDetail = ({id, nombre, img, desc, precio, stock, categoria}) =>
         <p>{desc}</p>
         <p>Stock: {stock}</p>
         <h5>Precio: ${precio}</h5>
+        <Memo/>
 
+        
         {
           isInCart(id)
             ? <Link to="/cart" className="btn btn-success my-3">Terminar mi compra</Link>
