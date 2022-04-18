@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { pedirDatos } from '../../helpers/pedirDatos'
 import { ItemDetail } from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom';
+// import { db } from '../../firebase/config';
+// import { collection, getDocs } from 'firebase/firestore';
 
 
 export const ItemDetailContainer = () => {
@@ -18,6 +20,11 @@ export const ItemDetailContainer = () => {
                 setItem(res.find( el => el.id === Number(itemId) ))
             })
           .finally(() => setLoading(false))
+
+        // const productosReferencia = collection(db, 'productos');
+        // getDocs(productosReferencia)
+        //     .then((resp) => resp.docs.map((doc) => console.log(doc.data())))
+
     }, [itemId])
 
   return (

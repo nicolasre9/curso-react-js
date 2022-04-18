@@ -13,6 +13,7 @@ import { Form } from './Ejemplos/Form/Form';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { MiProvider } from './context/MiContext'
 import {useState} from 'react'
+import './firebase/config'
 
 
 function App() {
