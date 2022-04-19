@@ -8,7 +8,7 @@ import { stock } from '../../data/stock';
 import { Item } from '../Item/item';
 import { useParams } from 'react-router-dom';
 import { db } from '../../firebase/config';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 
 export const ItemListContainer = ( {greeting} ) => {
@@ -52,7 +52,9 @@ export const ItemListContainer = ( {greeting} ) => {
         //     .finally(()=> setLoading(false))
 
         const productosReferencia = collection(db, 'productos');
-        getDocs(productosReferencia)
+        const q = catId ? query(productosReferencia, where("categoria", "==", catId)) : productosReferencia;
+
+        getDocs(q)
             .then((resp) => setProductos(resp.docs.map((doc) => {
                 return {
                     id: doc.id,

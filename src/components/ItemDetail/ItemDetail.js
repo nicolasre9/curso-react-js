@@ -31,7 +31,7 @@ export const ItemDetail = ({id, nombre, img, desc, precio, stock, categoria}) =>
         <p>{desc}</p>
         <p>Stock: {stock}</p>
         <h5>Precio: ${precio}</h5>
-        <Memo/>
+        {/* <Memo/> */}
 
         
         {
